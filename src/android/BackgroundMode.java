@@ -140,7 +140,7 @@ public class BackgroundMode extends CordovaPlugin {
     public void onResume(boolean multitasking) {
         super.onResume(multitasking);
         inBackground = false;
-        stopService();
+       // stopService();
     }
 
     /**
@@ -148,7 +148,7 @@ public class BackgroundMode extends CordovaPlugin {
      */
     @Override
     public void onDestroy() {
-        stopService();
+        startService();
         super.onDestroy();
         android.os.Process.killProcess(android.os.Process.myPid());
     }
@@ -168,7 +168,7 @@ public class BackgroundMode extends CordovaPlugin {
      * Disable the background mode.
      */
     private void disableMode() {
-        stopService();
+        startService();
         isDisabled = true;
     }
 
